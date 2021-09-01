@@ -37,7 +37,7 @@ steps:
 
   # Auto deploys branches
   - label: ':rocket: Release Branch'
-    branches: '!master !v*'
+    branches: '!master !v* !TOOL-2023_testing_new_node_builds'
     agents:
       queue: v1
     commands:
