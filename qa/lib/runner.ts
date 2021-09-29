@@ -23,7 +23,7 @@ export async function run(params: ComparisonParams) {
     const context = await browser.newContext()
     const page = await context.newPage()
 
-    await page.route('**', async (route) => {
+    page.route('**', async (route) => {
       const request = route.request()
       if (
         request.url().includes('cdn.segment') ||
