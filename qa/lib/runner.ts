@@ -23,7 +23,7 @@ export async function run(params: ComparisonParams) {
     const context = await browser.newContext()
     const page = await context.newPage()
 
-    page.route('**', async (route) => {
+    await page.route('**', async (route) => {
       const request = route.request()
       if (
         request.url().includes('cdn.segment') ||
@@ -32,7 +32,7 @@ export async function run(params: ComparisonParams) {
         request.url().includes('unpkg')
       ) {
         bundleRequests.push(request.url())
-        route.continue().catch(console.error)
+        await route.continue().catch(console.error)
         return
       }
 
